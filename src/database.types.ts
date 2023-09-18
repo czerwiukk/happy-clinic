@@ -27,6 +27,31 @@ export interface Database {
         }
         Relationships: []
       }
+      documents: {
+        Row: {
+          created_at: string
+          path: string
+          patient_id: number | null
+        }
+        Insert: {
+          created_at?: string
+          path: string
+          patient_id?: number | null
+        }
+        Update: {
+          created_at?: string
+          path?: string
+          patient_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "documents_patient_id_fkey"
+            columns: ["patient_id"]
+            referencedRelation: "patients"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       patients: {
         Row: {
           birthday: string | null
