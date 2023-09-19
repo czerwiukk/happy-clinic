@@ -58,6 +58,7 @@ export interface Database {
           clinic_id: number
           created_at: string
           id: number
+          is_male: boolean | null
           name: string
           phone_number: string | null
         }
@@ -66,6 +67,7 @@ export interface Database {
           clinic_id: number
           created_at?: string
           id?: number
+          is_male?: boolean | null
           name: string
           phone_number?: string | null
         }
@@ -74,6 +76,7 @@ export interface Database {
           clinic_id?: number
           created_at?: string
           id?: number
+          is_male?: boolean | null
           name?: string
           phone_number?: string | null
         }

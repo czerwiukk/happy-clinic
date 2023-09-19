@@ -44,7 +44,7 @@ const router = createBrowserRouter([
           const clinicId = `${params.clinicId}`;
           const patients = await supabase
             .from("patients")
-            .select("name, id")
+            .select("*")
             .eq("clinic_id", clinicId);
           return { patients: patients.data };
         },
@@ -71,11 +71,9 @@ const router = createBrowserRouter([
             .from("documents")
             .createSignedUrls(documents.data?.map((doc) => doc.path) ?? [], 60);
 
-          console.log(urls);
-
           return {
             patient: patient.data,
-            documents: urls.data?.map((url) => url.signedUrl),
+            documents: urls?.data?.map((url) => url.signedUrl) ?? [],
           };
         },
       },

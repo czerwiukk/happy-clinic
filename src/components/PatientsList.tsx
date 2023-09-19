@@ -18,7 +18,7 @@ export const PatientsList = () => {
         Nie ma pacjentów <span className="text-2xl">😩</span>
       </p>
     );
-
+  console.log(patients);
   return (
     <section className="space-y-2">
       <h3>Dzielni pacjenci:</h3>
@@ -30,7 +30,7 @@ export const PatientsList = () => {
               to={`patients/${patient.id}`}
               className="text-lg font-bold cursor-pointer flex items-center gap-2"
             >
-              <span className="text-2xl">👨 </span>
+              <span className="text-2xl">{patient.is_male ? "👨" : "👩"} </span>
 
               {patient.name}
             </Link>

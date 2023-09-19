@@ -38,7 +38,7 @@ export const Patient: FC = () => {
     <section>
       <div className="flex gap-4">
         <h3 className="text-xl">
-          <span className="text-xl">👨 </span>
+          <span className="text-xl">{patient.is_male ? "👨" : "👩"} </span>
 
           {patient.name}
         </h3>
@@ -60,6 +60,19 @@ export const Patient: FC = () => {
               new Date(patient.created_at).toLocaleString()}
           </p>
         </section>
+
+        <div>
+          <Button
+            onClick={async () => {
+              const response = await supabase.functions.invoke("send-sms");
+              alert(JSON.stringify(response.data));
+            }}
+          >
+            Send sms <span className="text-xl"> 📲 </span> without leaking the
+            secret
+            <span className="text-xl"> 🤐 </span>
+          </Button>
+        </div>
       </div>
 
       <section className="space-y-8">
@@ -87,7 +100,7 @@ export const Patient: FC = () => {
         />
 
         {uploading ? (
-          <span className="text-3xl animate-bounce">Ładujemy wariata 🤞 </span>
+          <span className="text-2xl animate-bounce">Ładujemy wariata 🤞 </span>
         ) : (
           <Button onClick={handleClick}>
             Dodaj dokument <span className="text-xl"> 📜 </span>
