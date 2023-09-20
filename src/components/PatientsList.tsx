@@ -18,7 +18,7 @@ export const PatientsList = () => {
         Nie ma pacjentów <span className="text-2xl">😩</span>
       </p>
     );
-  console.log(patients);
+
   return (
     <section className="space-y-2">
       <h3>Dzielni pacjenci:</h3>
